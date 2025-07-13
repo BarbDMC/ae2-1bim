@@ -50,6 +50,7 @@ turismo /
 ### 1. Crear entorno virtual:
 
 ```bash
+cd turismo
 python -m venv venv
 ```
 
