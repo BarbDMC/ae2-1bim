@@ -1,0 +1,39 @@
+{% extends "parque/base.html" %}
+
+{% block content %}
+  <h2>Recorridos</h2>
+
+  <a 
+    href="{% url 'crear_recorrido' %}" 
+    style="display: inline-block; margin-bottom: 10px;"
+  >
+    + Nuevo recorrido
+  </a>
+
+  <table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+      <tr>
+        <th>Nombre del Recorrido</th>
+        <th>Duración del recorrido (horas)</th>
+        <th>Costo del recorrido</th>
+        <th>Guía asignado</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for recorrido in recorridos %}
+        <tr>
+            <td>{{ recorrido.nombre }}</td>
+            <td>{{ recorrido.duracion_horas }}</td>
+            <td>${{ recorrido.costo }}</td>
+            <td>{{ recorrido.guia.nombres }} {{ recorrido.guia.apellidos }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No hay recorridos registrados.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <a href="/">← Inicio</a>
+{% endblock %}

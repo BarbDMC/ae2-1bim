@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Turismo</title>
+</head>
+<body>
+    <h1>Gestión de Turismo</h1>
+    <nav>
+        <a href="{% url 'listar_parques' %}">Parques</a> |
+        <a href="{% url 'listar_guias' %}">Guías</a> |
+        <a href="{% url 'listar_recorridos' %}">Recorridos</a>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>

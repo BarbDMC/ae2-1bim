@@ -1,0 +1,39 @@
+{% extends "parque/base.html" %}
+
+{% block content %}
+  <h2>Parques Naturales</h2>
+
+  <a 
+    href="{% url 'crear_parque' %}"
+    style="display: inline-block; margin-bottom: 10px;"
+  >
+    + Nuevo parque
+  </a>
+
+  <table border="1" cellspacing="0" cellpadding="5">
+      <thead>
+          <tr>
+              <th>Nombre del Parque</th>
+              <th>Ubicación</th>
+              <th>Área Total (km²)</th>
+              <th>Acciones</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for parque in parques %}
+          <tr>
+              <td>{{ parque.nombre }}</td>
+              <td>{{ parque.ubicacion }}</td>
+              <td>{{ parque.area_km2 }}</td>
+              <td>
+                  <a href="{% url 'editar_parque' parque.id %}">Editar</a>
+              </td>
+          </tr>
+          {% empty %}
+          <tr>
+              <td colspan="4">No hay parques registrados.</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+{% endblock %}

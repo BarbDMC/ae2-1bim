@@ -1,0 +1,37 @@
+{% extends "parque/base.html" %}
+
+{% block content %}
+  <h2>Guías Turísticos</h2>
+
+  <a 
+    href="{% url 'crear_guia' %}"
+    style="display: inline-block; margin-bottom: 10px;"
+  >
+    + Nuevo guía
+  </a>
+
+  <table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+      <tr>
+        <th>Nombre del Guía</th>
+        <th>Parque</th>
+        <th>Año de experiencia</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for guia in guias %}
+        <tr>
+            <td>{{ guia.nombres }} {{ guia.apellidos }}</td>
+            <td>{{ guia.parque.nombre }}</td>
+            <td>{{ guia.experiencia }} años</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No hay guías registrados.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <a href="/">← Inicio</a>
+{% endblock %}
